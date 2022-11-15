@@ -16,7 +16,7 @@ function App() {
   return (
     
     <div className="box-border w-full min-h-screen flex flex-col items-center  bg-teal-500 ">
-      <h1 className="text-5xl pb-10 pt-10 text-white">CRUD REDUX TOOLKIT</h1>
+      <h1 className="text-5xl text-center pb-10 pt-10 text-white">CRUD REDUX TOOLKIT</h1>
       <div className="flex flex-col justify-center items-center">
         <input
           className="border-none rounded select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 w-72"
@@ -40,7 +40,7 @@ function App() {
           Add User
         </button>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center md:justify-start">
         {userList.length !== 0  ?
         userList.map((user) => (
           <div className="bg-cyan-200 rounded-lg m-h-64 p-2 mx-4 mt-5 flex flex-col justify-center " key={user.id}>
