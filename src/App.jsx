@@ -12,6 +12,9 @@ function App() {
   const [newUsername, setNewUsername] = useState("");
 
 
+// tailwind variables for styling
+  const inputStyles = `border-none rounded select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 w-72`
+  const buttonStyles=`rounded-full bg-cyan-400 mx-auto mt-2 text-white w-40`
 
   return (
     
@@ -19,19 +22,19 @@ function App() {
       <h1 className="text-5xl text-center pb-10 pt-10 text-white">CRUD REDUX TOOLKIT</h1>
       <div className="flex flex-col justify-center items-center">
         <input
-          className="border-none rounded select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 w-72"
+          className={inputStyles}
           type="text"
           placeholder="Enter Name"
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          className="border-none rounded select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 mt-2 w-72"
+          className={`${inputStyles} mt-2 `}
           type="text"
           placeholder="Enter Username"
           onChange={(e) => setUsername(e.target.value)}
         />
         <button
-          className="rounded-full bg-cyan-400  mt-2  text-white w-40"
+          className={buttonStyles}
           onClick={() => { name !== "" && username !== "" ?
             dispatch(addUser({ id: userList.length !== 0 ? userList[userList.length - 1].id + 1 : userList.length , name: name, username: username})) :
             Swal.fire( {title: 'Please fill all the fields!',
@@ -46,9 +49,9 @@ function App() {
           <div className="bg-cyan-200 rounded-lg m-h-64 p-2 mx-4 mt-5 flex flex-col justify-center " key={user.id}>
             <h3 >Name: <span className="font-bold">{user.name}</span></h3>
             <p>Username: <span className="font-bold"> {user.username} </span></p>
-            <input className="border-none mt-2 rounded select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent px-2 w-60" type="text" placeholder="Enter new username" onChange={(e) => setNewUsername(e.target.value) } />
-            <button className="rounded-full bg-green-600 mx-auto mt-2  text-white w-40 " onClick={() => dispatch(updateUsername({id: user.id, username: newUsername})) }>Update Username</button>
-            <button className="rounded-full bg-red-400 mx-auto  mt-2  text-white w-40" onClick={() => dispatch(deleteUser({id:user.id}))}>Delete user</button>
+            <input className={`${inputStyles} w-60`} type="text" placeholder="Enter new username" onChange={(e) => setNewUsername(e.target.value) } />
+            <button className={`${buttonStyles} bg-green-600`} onClick={() => dispatch(updateUsername({id: user.id, username: newUsername})) }>Update Username</button>
+            <button className={`${buttonStyles} bg-red-500`} onClick={() => dispatch(deleteUser({id:user.id}))}>Delete user</button>
           </div>
         ))
 
