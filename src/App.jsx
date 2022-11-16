@@ -50,7 +50,9 @@ function App() {
             <h3 >Name: <span className="font-bold">{user.name}</span></h3>
             <p>Username: <span className="font-bold"> {user.username} </span></p>
             <input className={`${inputStyles} w-60`} type="text" placeholder="Enter new username" onChange={(e) => setNewUsername(e.target.value) } />
-            <button className={`${buttonStyles} bg-green-600`} onClick={() => dispatch(updateUsername({id: user.id, username: newUsername})) }>Update Username</button>
+            <button className={`${buttonStyles} bg-green-600`} onClick={() => newUsername !== "" ? dispatch(updateUsername({id: user.id, username: newUsername})) :  Swal.fire( {title: 'Please fill the field!',
+            icon: 'error'})
+           }>Update Username</button>
             <button className={`${buttonStyles} bg-red-500`} onClick={() => dispatch(deleteUser({id:user.id}))}>Delete user</button>
           </div>
         ))
